@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    ports:
+      - "${PORT:-8080}:80"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true

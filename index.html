@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="张颖 · 嵌入式 Linux 软件工程师。3 年主控系统集成经验，RV1126 RTK 接收机、GD32F303 LCD 模块项目作品集。">
+  <meta name="theme-color" content="#122a4d">
+  <meta property="og:title" content="张颖 · 嵌入式 Linux 软件工程师">
+  <meta property="og:description" content="主控系统集成 · 模块交互 · 厂商驱动适配 · GD32 LCD 自研固件">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/rv1126-architecture.png">
+  <title>张颖 · 嵌入式 Linux 软件工程师</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">ZY</span>
+        <span class="brand-text">
+          <strong>张颖</strong>
+          <small>Embedded Linux</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="主导航">
+        <a href="#about">关于</a>
+        <a href="#projects">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#education">教育</a>
+        <a href="#contact">联系</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-ghost interview-toggle" id="interviewToggle" type="button" aria-pressed="false" title="显示每个项目的讲解要点与可能追问">
+          <span class="toggle-dot" aria-hidden="true"></span>
+          <span class="toggle-label">面试模式</span>
+        </button>
+        <a class="btn btn-primary header-resume" href="mailto:792854726@qq.com?subject=%E6%9D%A5%E8%87%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E9%9D%A2%E8%AF%95%E9%82%80%E7%BA%A6">邮件联系</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="interview-banner" id="interviewBanner" role="status">
+    <div class="container">
+      <strong>面试讲解模式已开启</strong>
+      <span>项目下方会显示 30 秒讲法、可能追问和职责边界。适合面试时边展示边讲。</span>
+      <button type="button" class="banner-close" id="bannerClose" aria-label="关闭提示">×</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="pulse" aria-hidden="true"></span>
+            上海 / 苏州 · 随时到岗
+          </div>
+          <h1>张颖<span class="accent">.</span></h1>
+          <p class="hero-role">嵌入式 Linux 软件工程师</p>
+          <p class="hero-desc">
+            3 年+ 主控系统集成经验。做过 RV1126 RTK 接收机的主控侧集成：把 WiFi/BT、4G、Camera、GNSS、IMU、磁力计、激光、电台、eMMC、库仑计、LCD 等 11 个外设模块，接进同一套 Linux 系统。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">查看项目 <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-secondary" href="mailto:792854726@qq.com?subject=%E6%9D%A5%E8%87%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E9%9D%A2%E8%AF%95%E9%82%80%E7%BA%A6">邮件联系</a>
+            <a class="btn btn-ghost" href="#contact">联系我</a>
+          </div>
+          <div class="hero-tags" aria-label="技术关键词">
+            <span>RV1126</span>
+            <span>Linux / Buildroot</span>
+            <span>GD32F303</span>
+            <span>RTK 接收机</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="system-card" aria-label="RV1126 主控与模块总线概览">
+            <div class="system-card-head">
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="mono">system.map</span>
+              <span class="status-chip">RV1126</span>
+            </div>
+
+            <div class="chip-core">
+              <span class="chip-kicker">MAIN CONTROL</span>
+              <strong>RV1126</strong>
+              <span>Linux · Buildroot · DTS</span>
+            </div>
+
+            <div class="bus-list">
+              <div class="bus-row"><span class="bus-tag">USB</span><span>4G EG800K</span></div>
+              <div class="bus-row"><span class="bus-tag">SDIO</span><span>WiFi / BT FCS950U</span></div>
+              <div class="bus-row"><span class="bus-tag">UART</span><span>GNSS · IMU · 激光 · 电台 · LCD</span></div>
+              <div class="bus-row"><span class="bus-tag">I2C</span><span>磁力计 · 库仑计</span></div>
+              <div class="bus-row"><span class="bus-tag">MIPI</span><span>Camera OG02B10 · GC2053</span></div>
+              <div class="bus-row"><span class="bus-tag">eMMC</span><span>userdata · 静态存储</span></div>
+            </div>
+
+            <div class="system-card-foot">
+              <span>11 modules</span>
+              <span>6 buses</span>
+              <span>vendor drivers + adaptation</span>
+            </div>
+          </div>
+          <p class="hero-note">主控侧集成 · 厂商驱动适配 · 1 套自研 LCD 固件</p>
+        </div>
+      </div>
+
+      <div class="container stats reveal" aria-label="关键数字">
+        <div class="stat"><strong>3<span>+</span></strong><small>年嵌入式 Linux</small></div>
+        <div class="stat"><strong>11</strong><small>外设模块集成</small></div>
+        <div class="stat"><strong>2</strong><small>完整项目</small></div>
+        <div class="stat"><strong>1</strong><small>自研 LCD 固件</small></div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <div class="section-kicker">ABOUT</div>
+          <h2>把主控和十几个模块，捏成一个稳定产品。</h2>
+          <p>
+            我的工作不是单独写某一个驱动，而是站在主控侧，把不同厂商的模块接进来：确认接口、配 DTS、查电源/复位/时钟、把厂商驱动跑通，再把协议解析、状态机和业务逻辑串起来。
+          </p>
+          <p>
+            在 RV1126 RTK 接收机项目里，我负责主控本身和主控与其他模块的交互；WiFi/BT、4G、Camera 的驱动和固件由厂商提供，我做适配与联调。LCD 是我独立完成的 GD32F303 固件——这块可以从主控 UART 协议一直讲到 SPI 显示、菜单、按键和 IAP 升级。
+          </p>
+          <div class="about-quote">
+            <span class="quote-mark">“</span>
+            边界清楚，比“什么都会”更可信。面试时我也这么说。
+          </div>
+        </div>
+
+        <aside class="boundary-card reveal" aria-label="职责边界">
+          <div class="boundary-head">
+            <span>职责边界</span>
+            <small>面试可展开</small>
+          </div>
+          <div class="boundary-item">
+            <span class="boundary-num">01</span>
+            <div>
+              <strong>我负责</strong>
+              <p>主控系统集成、模块接口/协议、业务状态机、厂商驱动适配、软硬联调。</p>
+            </div>
+          </div>
+          <div class="boundary-item">
+            <span class="boundary-num">02</span>
+            <div>
+              <strong>厂商提供</strong>
+              <p>WiFi/BT、4G、Camera 的驱动/固件；我负责 DTS、电源/复位/时钟、固件路径、接口配置和联调。</p>
+            </div>
+          </div>
+          <div class="boundary-item">
+            <span class="boundary-num">03</span>
+            <div>
+              <strong>我独立负责</strong>
+              <p>GD32F303 LCD 模块固件：SPI LCD、菜单、按键、UART 协议、Flash 读写与 IAP 升级。</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================== PROJECTS ============================== -->
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">PROJECTS</div>
+            <h2>项目经历</h2>
+          </div>
+          <p>两个项目，一条主线：主控集成 → 模块交互 → 整机稳定性。</p>
+        </div>
+
+        <!-- Project 1 -->
+        <article class="project-card reveal" id="project-rv1126">
+          <div class="project-top">
+            <div class="project-index-wrap">
+              <span class="project-index">01</span>
+              <span class="project-kicker">RTK 接收机 · 2023–2026</span>
+            </div>
+            <span class="project-status">主控集成</span>
+          </div>
+
+          <h3>RV1126 RTK 接收机</h3>
+          <p class="project-subtitle">主控系统集成 · 11 个外设模块交互 · 厂商驱动适配</p>
+          <p class="project-summary">
+            面向测绘场景的 RTK 接收机：卫星定位、手簿交互、内置电台、4G/Ntrip、惯导倾斜测量、激光测点、视觉放样和静态存储。主控用 RV1126 跑 Linux + Buildroot，我负责把 11 个外设模块接进主控并串起业务。
+          </p>
+
+          <div class="tag-row">
+            <span>RV1126</span>
+            <span>Linux</span>
+            <span>Buildroot</span>
+            <span>DTS</span>
+            <span>FCS950U</span>
+            <span>EG800K</span>
+            <span>OG02B10 / GC2053</span>
+            <span>Ntrip / RTCM</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-info">
+              <div class="info-block">
+                <h4>项目背景</h4>
+                <p>接收机通过 GNSS 获取实时时间与定位；手簿通过 WiFi/经典蓝牙查看状态、配置参数；内置电台支持基准站/移动站；联网后通过 4G/Ntrip 获取差分数据，达到厘米级固定解。</p>
+              </div>
+              <div class="info-block">
+                <h4>我的职责</h4>
+                <ul>
+                  <li>主控侧系统集成：接口确认、DTS、电源/复位/时钟、启动与稳定性。</li>
+                  <li>模块交互与协议：UART/I2C/SPI/USB/SDIO/MIPI 的适配、解析和状态机。</li>
+                  <li>厂商驱动适配：FCS950U、EG800K、OG02B10/GC2053 的 DTS、固件路径与联调。</li>
+                  <li>业务集成：手簿交互、4G/Ntrip、惯导/激光/视觉数据流、静态存储。</li>
+                </ul>
+              </div>
+              <div class="info-block">
+                <h4>难点与解决</h4>
+                <ul>
+                  <li>4G/Ntrip 偶发掉线：分 USB 枚举、SIM/注册、拨号、Ntrip 四段定位，补复位时序与重连状态机。</li>
+                  <li>手簿连接不稳定：排查 WiFi AP、信道/干扰、IP/DHCP 和蓝牙配对，做多设备兼容性验证。</li>
+                  <li>惯导/激光测点偏差：查 IMU/磁力计数据、标定、时间同步和坐标转换，用已知点对比验证。</li>
+                </ul>
+              </div>
+              <div class="info-block">
+                <h4>成果</h4>
+                <ul>
+                  <li>完成 RV1126 主控与 11 个外设模块的接口适配与联调。</li>
+                  <li>完成多厂商模块驱动的适配与系统集成，支撑整机功能联调。</li>
+                  <li>独立完成 GD32F303 LCD 固件，打通主控 UART 到前面板显示。</li>
+                </ul>
+              </div>
+            </div>
+
+            <figure class="project-media">
+              <button class="image-button" type="button" data-zoom="assets/rv1126-architecture.png" aria-label="放大查看 RV1126 系统架构图">
+                <img src="assets/rv1126-architecture.png" alt="RV1126 RTK 接收机系统架构图：主控、11 个外设模块、6 类总线和职责边界" loading="lazy">
+                <span class="zoom-hint">点击放大</span>
+              </button>
+              <figcaption>系统架构图（脱敏）· 主控 + 11 个外设模块 + 6 类总线</figcaption>
+            </figure>
+          </div>
+
+          <div class="project-actions">
+            <button class="btn btn-secondary" type="button" data-toggle-details="rv1126-details" aria-expanded="false" aria-controls="rv1126-details">展开项目详情</button>
+            <button class="btn btn-ghost" type="button" data-zoom="assets/rv1126-architecture.png">查看架构图</button>
+            <span class="action-note">代码与原理图受保密限制，面试可详谈</span>
+          </div>
+
+          <div class="project-details" id="rv1126-details" hidden>
+            <div class="detail-head">
+              <h4>11 个外设模块 + 主控，6 类总线</h4>
+              <p>面试时按总线分组讲，不要逐个念模块名。</p>
+            </div>
+            <div class="module-grid">
+              <div class="module-chip"><strong>WiFi / BT</strong><span>SDIO + UART</span><small>FCS950U</small></div>
+              <div class="module-chip"><strong>4G</strong><span>USB</span><small>EG800K</small></div>
+              <div class="module-chip"><strong>Camera</strong><span>MIPI CSI-2</span><small>OG02B10 / GC2053</small></div>
+              <div class="module-chip"><strong>GNSS</strong><span>UART</span><small>NMEA / 差分</small></div>
+              <div class="module-chip"><strong>IMU</strong><span>UART</span><small>姿态 / 倾斜</small></div>
+              <div class="module-chip"><strong>磁力计</strong><span>I2C</span><small>三轴磁 / 融合</small></div>
+              <div class="module-chip"><strong>激光</strong><span>UART</span><small>测距 / 测点</small></div>
+              <div class="module-chip"><strong>电台</strong><span>UART</span><small>基准站 / 移动站</small></div>
+              <div class="module-chip"><strong>eMMC</strong><span>eMMC</span><small>userdata / 静态存储</small></div>
+              <div class="module-chip"><strong>库仑计</strong><span>I2C</span><small>电量 / 低电</small></div>
+              <div class="module-chip"><strong>LCD</strong><span>UART</span><small>GD32F303 前面板</small></div>
+              <div class="module-chip"><strong>主控</strong><span>RV1126</span><small>Linux / Buildroot</small></div>
+            </div>
+
+            <div class="flow-grid">
+              <div class="flow-item">
+                <span class="flow-num">01</span>
+                <div><strong>手簿 / 配置</strong><p>手簿 → WiFi AP / 经典蓝牙 → 主控 → Web / 状态 / 配置。</p></div>
+              </div>
+              <div class="flow-item">
+                <span class="flow-num">02</span>
+                <div><strong>差分 / 固定解</strong><p>GNSS → 主控；4G/Ntrip 或内置电台 → 差分数据 → 厘米级固定解。</p></div>
+              </div>
+              <div class="flow-item">
+                <span class="flow-num">03</span>
+                <div><strong>测量 / 存储</strong><p>IMU + 磁力计 → 倾斜；激光 / Camera → 测点/放样；GNSS 原始数据 → eMMC。</p></div>
+              </div>
+            </div>
+
+            <div class="boundary-strip">
+              <span>厂商驱动：WiFi/BT、4G、Camera</span>
+              <span>我做：DTS / 电源 / 复位 / 时钟 / 固件路径 / 接口 / 联调</span>
+              <span>我自研：GD32 LCD 固件</span>
+            </div>
+          </div>
+
+          <div class="interview-notes">
+            <div class="note-head"><span>面试讲解模式</span><span class="note-badge">30 秒</span></div>
+            <p><strong>30 秒讲法：</strong>“这是 RTK 接收机，RV1126 主控，Linux + Buildroot。我负责主控本身和 11 个外设模块的交互、协议、业务状态机和联调；WiFi/BT、4G、Camera 用厂商驱动做适配；LCD 是我独立做的 GD32 固件。”</p>
+            <p><strong>可能追问：</strong>4G 怎么拨号/Ntrip 怎么工作？手簿 WiFi AP/经典蓝牙怎么连？IMU+磁力计+激光怎么做测点？厂商驱动和你做的适配怎么分？</p>
+            <p><strong>边界：</strong>不把厂商驱动说成自己从零写；重点讲 DTS、电源/复位/时钟、固件路径、接口配置、联调与业务集成。</p>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card reveal" id="project-lcd">
+          <div class="project-top">
+            <div class="project-index-wrap">
+              <span class="project-index">02</span>
+              <span class="project-kicker">GD32F303 · LCD 显示模块</span>
+            </div>
+            <span class="project-status status-teal">自研固件</span>
+          </div>
+
+          <h3>GD32F303 LCD 模块</h3>
+          <p class="project-subtitle">SPI 显示驱动 · 菜单状态机 · 按键交互 · UART 协议 · IAP 升级</p>
+          <p class="project-summary">
+            RTK 接收机的前面板显示模块：GD32F303 通过 SPI 驱动 LCD，实时显示定位状态、卫星数、数据链和电量；用户通过按键进入菜单配置参数；主控通过 UART 与 LCD 模块交互。
+          </p>
+
+          <div class="tag-row">
+            <span>GD32F303</span>
+            <span>C</span>
+            <span>SPI LCD</span>
+            <span>GPIO / EXTI</span>
+            <span>UART</span>
+            <span>Flash</span>
+            <span>IAP</span>
+            <span>Watchdog</span>
+          </div>
+
+          <div class="project-body project-body-lcd">
+            <div class="project-info">
+              <div class="info-block">
+                <h4>项目背景</h4>
+                <p>接收机需要一块低成本的本地显示面板：不依赖手簿，也能查看固定解状态、卫星数、电量、数据链，并完成常用参数配置。</p>
+              </div>
+              <div class="info-block">
+                <h4>我的职责</h4>
+                <ul>
+                  <li>SPI LCD 驱动：初始化、图形/字符绘制、状态页面刷新。</li>
+                  <li>菜单状态机：状态 / 卫星 / 设置页面，按键切换与参数配置。</li>
+                  <li>按键中断：消抖、长短按识别、菜单控制逻辑。</li>
+                  <li>UART 协议：与主控同步状态、解析配置命令；Flash 参数存储、IAP 升级、看门狗。</li>
+                </ul>
+              </div>
+              <div class="info-block">
+                <h4>难点与解决</h4>
+                <ul>
+                  <li>刷屏闪烁/撕裂：调整刷新策略，局部刷新 + 合理刷新频率。</li>
+                  <li>按键抖动/长短按：EXTI + 定时器/状态机，区分短按、长按和连按。</li>
+                  <li>IAP 升级变砖：校验、失败恢复、看门狗，降低异常断电变砖风险。</li>
+                </ul>
+              </div>
+              <div class="info-block">
+                <h4>成果</h4>
+                <ul>
+                  <li>完成 LCD 显示、菜单、按键、UART 协议与 IAP 的固件闭环。</li>
+                  <li>主控通过 UART 下发状态，LCD 实时显示整机状态。</li>
+                  <li>沉淀了前面板显示与升级的代码结构。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lcd-demo-wrap">
+              <div class="lcd-demo" id="lcd-demo" aria-label="GD32 LCD 菜单在线演示">
+                <div class="lcd-bezel">
+                  <div class="lcd-screen" aria-live="polite">
+                    <div class="lcd-top"><span>RTK-01</span><span id="lcdMode">FIX</span></div>
+                    <div class="lcd-title" id="lcdTitle">状态</div>
+                    <div class="lcd-rows" id="lcdRows"></div>
+                    <div class="lcd-foot"><span>▲▼ 切换</span><span>OK 确认</span></div>
+                  </div>
+                </div>
+                <div class="lcd-keys" aria-label="LCD 按键">
+                  <button type="button" data-lcd="up" aria-label="向上">▲</button>
+                  <button type="button" data-lcd="down" aria-label="向下">▼</button>
+                  <button type="button" data-lcd="ok" aria-label="确认">OK</button>
+                  <button type="button" data-lcd="back" aria-label="返回">ESC</button>
+                </div>
+                <p class="lcd-hint">在线演示：用 ▲▼ 切换页面，OK / ESC 体验菜单逻辑。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-actions">
+            <button class="btn btn-secondary" type="button" data-toggle-details="lcd-details" aria-expanded="false" aria-controls="lcd-details">展开项目详情</button>
+            <a class="btn btn-ghost" href="#lcd-demo">在线体验 LCD 菜单</a>
+          </div>
+
+          <div class="project-details" id="lcd-details" hidden>
+            <div class="detail-head">
+              <h4>从主控 UART 到 LCD 显示，全链路自研</h4>
+              <p>这块可以作为区别于“只调厂商驱动”的亮点来讲。</p>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-card">
+                <h5>显示层</h5>
+                <p>SPI LCD 初始化、坐标/颜色/字体、状态页与菜单页绘制；控制刷新区域和频率，减少闪烁。</p>
+              </div>
+              <div class="detail-card">
+                <h5>交互层</h5>
+                <p>按键 EXTI 中断、消抖、长短按识别；菜单状态机处理进入/退出/切换/确认。</p>
+              </div>
+              <div class="detail-card">
+                <h5>通信层</h5>
+                <p>UART 协议解析主控状态与配置命令；帧头、长度、校验、超时重同步。</p>
+              </div>
+              <div class="detail-card">
+                <h5>可靠性</h5>
+                <p>Flash 参数存储、IAP 校验与失败恢复、看门狗；提高异常断电后的可恢复性。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="interview-notes">
+            <div class="note-head"><span>面试讲解模式</span><span class="note-badge">30 秒</span></div>
+            <p><strong>30 秒讲法：</strong>“LCD 是我独立做的 GD32F303 固件：SPI 驱动 LCD、菜单状态机、按键中断和长短按、UART 跟主控交互、Flash 参数和 IAP 升级。主控把整机状态发过来，LCD 实时显示，按键可以进菜单配置。”</p>
+            <p><strong>可能追问：</strong>SPI 时序怎么配？菜单状态机怎么设计？按键怎么消抖/区分长短按？IAP 怎么防止变砖？</p>
+            <p><strong>亮点：</strong>从主控 UART 协议到 LCD 显示、按键、升级全链路自研，能讲清“主控 ↔ 前面板”的完整闭环。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== SKILLS ============================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">SKILLS</div>
+            <h2>技能清单</h2>
+          </div>
+          <p>按“能直接上手”的顺序排，不写虚的“精通”。</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon">C</div>
+            <h3>语言与构建</h3>
+            <p>日常开发与交叉编译</p>
+            <div class="tag-row">
+              <span>C</span><span>Shell</span><span>Makefile</span><span>CMake</span><span>Git</span><span>GDB</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon">LX</div>
+            <h3>Linux 系统</h3>
+            <p>BSP 与系统集成</p>
+            <div class="tag-row">
+              <span>Buildroot</span><span>Linux Kernel</span><span>DTS</span><span>交叉编译</span><span>启动流程</span><span>rootfs</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon">IO</div>
+            <h3>接口与模块</h3>
+            <p>主控与模块交互</p>
+            <div class="tag-row">
+              <span>UART</span><span>I2C</span><span>SPI</span><span>GPIO / PWM</span><span>USB</span><span>SDIO</span><span>MIPI CSI-2</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon">RF</div>
+            <h3>模块与协议</h3>
+            <p>厂商驱动适配与业务集成</p>
+            <div class="tag-row">
+              <span>WiFi/BT FCS950U</span><span>4G EG800K</span><span>Camera OG02B10 / GC2053</span><span>GNSS / NMEA</span><span>Ntrip / RTCM</span><span>BlueZ / D-Bus</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon">DB</div>
+            <h3>调试与硬件</h3>
+            <p>从 log 到波形</p>
+            <div class="tag-row">
+              <span>dmesg</span><span>ftrace</span><span>perf</span><span>示波器</span><span>逻辑分析仪</span><span>万用表</span><span>原理图</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon">GD</div>
+            <h3>自研固件</h3>
+            <p>GD32F303 / 前面板</p>
+            <div class="tag-row">
+              <span>SPI LCD</span><span>菜单状态机</span><span>按键 / EXTI</span><span>Flash</span><span>IAP</span><span>看门狗</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="skills-note reveal">
+          <strong>正在深入：</strong> Linux 驱动模型、性能分析、低功耗与启动优化。
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== EDUCATION ============================== -->
+    <section class="section section-alt" id="education">
+      <div class="container education-grid">
+        <div class="edu-card reveal">
+          <div class="section-kicker">EDUCATION</div>
+          <h2>苏州科技大学</h2>
+          <p class="edu-major">计算机科学与技术 · 本科 · 2019.09–2023.06</p>
+          <div class="tag-row">
+            <span>计算机组成原理</span><span>数据结构</span><span>操作系统</span><span>计算机网络</span><span>数据库原理</span>
+          </div>
+          <p class="muted">CET-4 542 · CET-6 478</p>
+        </div>
+
+        <div class="learning-card reveal">
+          <span class="learning-kicker">NEXT</span>
+          <h3>继续往 Linux 底层走</h3>
+          <ul>
+            <li>Linux 驱动模型与 BSP  bring-up</li>
+            <li>性能分析：ftrace / perf / 启动优化</li>
+            <li>低功耗与整机稳定性</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT ============================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-panel reveal">
+        <div class="contact-copy">
+          <div class="section-kicker light">CONTACT</div>
+          <h2>聊聊你的 Linux 终端项目。</h2>
+          <p>我在看嵌入式 Linux 软件工程师机会，上海 / 苏州都可以，随时到岗。面试时可以现场打开这个网站，按项目展开讲；手机号可以在邮件或面试时提供。</p>
+          <div class="contact-actions">
+            <a class="btn btn-light" href="mailto:792854726@qq.com">发邮件</a>
+            <button class="btn btn-outline-light" type="button" id="copyEmail">复制邮箱</button>
+            <a class="btn btn-outline-light" href="mailto:792854726@qq.com?subject=%E7%B4%A2%E5%8F%96%E7%AE%80%E5%8E%86%20-%20%E5%BC%A0%E9%A2%96">邮件索取简历</a>
+          </div>
+        </div>
+
+        <div class="contact-list">
+          <a href="mailto:792854726@qq.com"><span>Email</span><strong>792854726@qq.com</strong></a>
+          <div><span>Phone</span><strong>面试时提供</strong></div>
+          <div><span>Location</span><strong>上海 / 苏州</strong></div>
+          <div><span>Job Intention</span><strong>嵌入式 Linux 软件工程师</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 张颖 · 个人求职作品集</span>
+      <span>Built with HTML / CSS / JS · 最后更新 2026.10</span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭图片">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <button class="back-top" id="backTop" type="button" aria-label="回到顶部">↑</button>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Cloudflare Tunnel configuration example.
+# 1. cloudflared tunnel create portfolio
+# 2. Replace <TUNNEL_UUID> and the credentials path.
+# 3. cloudflared tunnel route dns portfolio portfolio.example.com
+# 4. cloudflared tunnel run portfolio
+
+tunnel: <TUNNEL_UUID>
+credentials-file: /etc/cloudflared/<TUNNEL_UUID>.json
+
+ingress:
+  - hostname: portfolio.example.com
+    service: http://127.0.0.1:8080
+  - service: http_status:404
