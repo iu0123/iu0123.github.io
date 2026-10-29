@@ -4,6 +4,17 @@
 
 ---
 
+## 当前部署（已上线）
+
+- 仓库：https://github.com/iu0123/iu0123.github.io
+- 公网地址：**https://iu0123.github.io/**
+- 部署方式：GitHub Pages，`main` 分支根目录
+- HTTPS：GitHub 自动提供
+- 更新方式：修改文件后 `git add . && git commit -m "update" && git push`，Pages 会自动重新构建
+- 公开版联系方式：只保留邮箱，手机号显示“面试时提供”，不包含 PDF 简历
+
+---
+
 ## 0. 先选方案
 
 | 方案 | 成本 | 稳定性 | 难度 | HTTPS | 适合 |
